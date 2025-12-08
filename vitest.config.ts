@@ -1,0 +1,17 @@
+import { defineConfig } from 'vitest/config'
+
+export default defineConfig({
+  test: {
+    environment: 'node',
+    globals: true,
+    include: ['test/**/*.{test,spec}.ts'],
+    deps: {
+      inline: [
+        /@credo-ts/,
+        /@noble/,
+        /@openwallet-foundation/,
+        /@hyperledger/
+      ],
+    },
+  },
+})

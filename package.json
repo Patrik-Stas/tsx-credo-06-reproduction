@@ -1,0 +1,19 @@
+{
+  "name": "tsx-credo-06-reproduction",
+  "version": "1.0.0",
+  "description": "SSI Backend using CREDO 0.6 release",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "tsx src/index.ts"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@credo-ts/drizzle-storage": "0.6.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.3",
+    "vitest": "^2.1.3"
+  }
+}
