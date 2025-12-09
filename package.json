@@ -6,8 +6,7 @@
   "types": "dist/index.d.ts",
   "type": "module",
   "scripts": {
-    "test": "tsx src/index.ts",
-    "reproduce:did-error": "tsx src/reproduce-did-error.ts"
+    "test": "tsx src/reproduce-did-error.ts"
   },
   "license": "ISC",
   "dependencies": {
