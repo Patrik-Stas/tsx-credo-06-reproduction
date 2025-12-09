@@ -1,0 +1,47 @@
+diff --git a/node_modules/@credo-ts/drizzle-storage/build/util.mjs b/node_modules/@credo-ts/drizzle-storage/build/util.mjs
+index a40863c..d635d7f 100644
+--- a/node_modules/@credo-ts/drizzle-storage/build/util.mjs
++++ b/node_modules/@credo-ts/drizzle-storage/build/util.mjs
+@@ -1,19 +1,31 @@
++import { fileURLToPath } from "node:url";
++import { dirname as pathDirname } from "node:path";
++
+ //#region src/util.ts
+-const dirname = import.meta.dirname;
++// Make dirname work even when import.meta.dirname is not provided by the loader
++const __filename = fileURLToPath(import.meta.url);
++const dirname =
++  typeof import.meta.dirname === "string" && import.meta.dirname.length > 0
++    ? import.meta.dirname
++    : pathDirname(__filename);
++
+ const rootDirectory = `${dirname}/..`;
+-const addSchemaExtension = (path) => dirname.endsWith("/src") ? `${path}.ts` : `${path}.mjs`;
++const addSchemaExtension = (path) =>
++  dirname.endsWith("/src") ? `${path}.ts` : `${path}.mjs`;
++
+ const bundleMigrationDefinition = (bundle) => ({
+-	postgres: {
+-		schemaPath: addSchemaExtension(`${dirname}/${bundle}/postgres`),
+-		migrationsPath: `${rootDirectory}/migrations/${bundle}/postgres`
+-	},
+-	sqlite: {
+-		schemaPath: addSchemaExtension(`${dirname}/${bundle}/sqlite`),
+-		migrationsPath: `${rootDirectory}/migrations/${bundle}/sqlite`
+-	}
++  postgres: {
++    schemaPath: addSchemaExtension(`${dirname}/${bundle}/postgres`),
++    migrationsPath: `${rootDirectory}/migrations/${bundle}/postgres`,
++  },
++  sqlite: {
++    schemaPath: addSchemaExtension(`${dirname}/${bundle}/sqlite`),
++    migrationsPath: `${rootDirectory}/migrations/${bundle}/sqlite`,
++  },
+ });
++
+ function exhaustiveArray(_type, arr) {
+-	return arr;
++  return arr;
+ }
+ 
+ //#endregion
